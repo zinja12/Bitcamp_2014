@@ -6,7 +6,6 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JFrame;
-import java.applet.Applet;
 
 public class Game {
 	public static void main(String args[]){
