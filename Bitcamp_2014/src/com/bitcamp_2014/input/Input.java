@@ -8,6 +8,7 @@ public class Input implements KeyListener{
 	public static boolean right;
 	public static boolean up;
 	public static boolean down;
+	public static boolean space;
 	
 	public Input(){
 		
@@ -41,6 +42,9 @@ public class Input implements KeyListener{
 		case KeyEvent.VK_S:
 			down = true;
 			break;
+		case KeyEvent.VK_SPACE:
+			space = true;
+			break;
 		}
 	}
 	
@@ -71,6 +75,9 @@ public class Input implements KeyListener{
 			break;
 		case KeyEvent.VK_S:
 			down = false;
+			break;
+		case KeyEvent.VK_SPACE:
+			space = false;
 			break;
 		}
 	}

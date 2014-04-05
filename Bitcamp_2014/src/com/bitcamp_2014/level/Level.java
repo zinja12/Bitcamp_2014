@@ -11,6 +11,7 @@ import java.util.Random;
 
 import com.bitcamp_2014.entities.Player;
 import com.bitcamp_2014.entities.PuzzlePiece;
+import com.bitcamp_2014.main.GameStates;
 
 public class Level {
 	
@@ -22,6 +23,7 @@ public class Level {
 	
 	public static int score;
 	public static boolean loseGame = false;
+	public static boolean reset = false;
 	
 	public Level(){
 		score = 0;
@@ -32,6 +34,14 @@ public class Level {
 	}
 	
 	public void update(){
+		if(reset){
+			score = 0;
+			player = new Player();
+			puzzlePieces = new ArrayList<PuzzlePiece>();
+			puzzlePieces.add(new PuzzlePiece(random.nextInt(3) + 1));
+			reset = false;
+		}
+		
 		player.update();
 		
 		for(PuzzlePiece puzzlePiece : puzzlePieces){
@@ -48,12 +58,20 @@ public class Level {
 			}
 			
 			if(puzzlePiece.collision_Rect.contains(Player.loseCollision_Point)){
-				System.out.println("YOU LOSE");
 				Level.loseGame = true;
 				puzzlePiece.active = false;
 				puzzlePieces.remove(i);
+				GameStates.current_state = GameStates.GameState.END;
 			}
 		}
+		
+		/*if(score != 0 && (score % 5) == 0){
+			score++;
+		}*/
+	}
+	
+	public static void reset(){
+		reset = true;
 	}
 	
 	public void render(Graphics2D g){
@@ -68,6 +86,6 @@ public class Level {
 		
 		g.setColor(Color.WHITE);
 		g.setFont(new Font("Serif", Font.PLAIN, 18));
-		g.drawString("|" + score + "|", 155, 150);
+		g.drawString("|" + score + "|", 155, 145);
 	}
 }
