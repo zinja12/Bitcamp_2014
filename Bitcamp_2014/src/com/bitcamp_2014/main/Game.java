@@ -78,8 +78,6 @@ public class Game extends Canvas implements Runnable{
 	}
 	
 	public static void main(String args[]){
-		System.out.println("Initialized");
-		
 		Game game = new Game();
 		game.setPreferredSize(size);
 		game.setMaximumSize(size);
