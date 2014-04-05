@@ -27,6 +27,7 @@ public class Spritesheet {
 		}
 	}
 	
+	//This gets a sub image from a passed image at a given position of a given width and height
 	public BufferedImage getSprite(BufferedImage image, int x, int y, int width, int height){
 		return image.getSubimage(x, y, width, height);
 	}
