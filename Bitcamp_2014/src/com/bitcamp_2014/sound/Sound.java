@@ -5,29 +5,4 @@ import java.applet.AudioClip;
 import java.net.URL;
 
 public class Sound {
-	private AudioClip sound;
-	private URL songPath;
-	
-	public Sound(String fileName){
-		try{
-			songPath = new URL(fileName);
-			sound = Applet.newAudioClip(songPath);
-		} catch(Exception e){
-			//Do nothing
-			e.printStackTrace();
-		}
-	}
-	
-	//Sound controller methods
-	public void playSound(){
-		sound.loop();
-	}
-	
-	public void stopSound(){
-		sound.stop();
-	}
-	
-	public void playSoundOnce(){
-		sound.play();
-	}
 }
