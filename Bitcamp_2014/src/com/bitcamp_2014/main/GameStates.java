@@ -23,7 +23,7 @@ public class GameStates {
 	StartMenu startMenu;
 	EndMenu endMenu;
 	
-	public Clip sound = loadClip("/gameAudio_01.wav");
+	public Clip sound = loadClip("res/gameAudio_01.wav");
 	
 	public GameStates(){
 		current_state = GameState.TITLE;
