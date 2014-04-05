@@ -29,7 +29,7 @@ public class Game extends Canvas implements Runnable{
 	
 	private boolean running = false;
 	
-	Level level;
+	GameStates gameStates;
 	
 	public Game(){
 		addKeyListener(new Input());
@@ -37,7 +37,7 @@ public class Game extends Canvas implements Runnable{
 	
 	public void start(){
 		//Initialization
-		level = new Level();
+		gameStates = new GameStates();
 		
 		running = true;
 		new Thread(this).start();
@@ -63,14 +63,14 @@ public class Game extends Canvas implements Runnable{
 	
 	public void update(){
 		
-		level.update();
+		gameStates.update();
 	}
 	
 	public void render(){
 		Graphics2D g = (Graphics2D)screen.getGraphics();
 		
 		//Render things here
-		level.render(g);
+		gameStates.render(g);
 		
 		g = (Graphics2D)getGraphics();
 		g.drawImage(screen, 0, 0, size.width, size.height, 0, 0, pixel.width, pixel.height, null);

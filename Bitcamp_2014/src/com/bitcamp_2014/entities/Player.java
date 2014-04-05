@@ -10,33 +10,29 @@ import com.bitcamp_2014.input.Input;
 
 public class Player {
 	public Point position;
-	public static Rectangle loseCollision_Rect;
+	public static Point loseCollision_Point;
 	public static Rectangle winCollision_Rect;
 	public int direction;
 
 	public Player(){
 		position = new Point(135, 115);
+		loseCollision_Point = new Point(position.x + 24, position.y + 24);
 		direction = 1;
-		loseCollision_Rect = new Rectangle(position.x, position.y, 50, 50);
 		winCollision_Rect = new Rectangle(position.x, position.y, 50, 50);
 	}
 
 	public void update(){
 		if(Input.up){
 			direction = 1;
-			loseCollision_Rect = new Rectangle(position.x + 12, position.y, 50, 38);
 			winCollision_Rect = new Rectangle(position.x, position.y, 50, 12);
 		} else if(Input.right){
 			direction = 2;
-			loseCollision_Rect = new Rectangle(position.x, position.y, 38, 50);
 			winCollision_Rect = new Rectangle(position.x + 38, position.y, 12, 50);
 		} else if(Input.down){
 			direction = 3;
-			loseCollision_Rect = new Rectangle(position.x, position.y, 50, 38);
 			winCollision_Rect = new Rectangle(position.x, position.y + 38, 50, 12);
 		} else if(Input.left){
 			direction = 4;
-			loseCollision_Rect = new Rectangle(position.x + 12, position.y, 38, 50);
 			winCollision_Rect = new Rectangle(position.x, position.y, 12, 50);
 		}
 	}
