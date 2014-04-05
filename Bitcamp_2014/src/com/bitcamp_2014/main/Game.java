@@ -3,12 +3,14 @@ package com.bitcamp_2014.main;
 import java.awt.Canvas;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JFrame;
 
 import com.bitcamp_2014.input.Input;
+import com.bitcamp_2014.level.Level;
 
 public class Game extends Canvas implements Runnable{
 	private static final long serialVersionUID = 1L;
@@ -27,12 +29,15 @@ public class Game extends Canvas implements Runnable{
 	
 	private boolean running = false;
 	
+	Level level;
+	
 	public Game(){
 		addKeyListener(new Input());
 	}
 	
 	public void start(){
 		//Initialization
+		level = new Level();
 		
 		running = true;
 		new Thread(this).start();
@@ -57,22 +62,17 @@ public class Game extends Canvas implements Runnable{
 	}
 	
 	public void update(){
-		if(Input.left){
-			System.out.println("Left");
-		}
 		
-		if(Input.right){
-			System.out.println("Right");
-		}
+		level.update();
 	}
 	
 	public void render(){
-		Graphics g = screen.getGraphics();
+		Graphics2D g = (Graphics2D)screen.getGraphics();
 		
 		//Render things here
+		level.render(g);
 		
-		
-		g = getGraphics();
+		g = (Graphics2D)getGraphics();
 		g.drawImage(screen, 0, 0, size.width, size.height, 0, 0, pixel.width, pixel.height, null);
 		g.dispose();
 	}
