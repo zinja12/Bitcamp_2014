@@ -64,10 +64,6 @@ public class Level {
 				GameStates.current_state = GameStates.GameState.END;
 			}
 		}
-		
-		/*if(score != 0 && (score % 5) == 0){
-			score++;
-		}*/
 	}
 	
 	public static void reset(){
