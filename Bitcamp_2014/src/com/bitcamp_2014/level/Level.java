@@ -1,6 +1,7 @@
 package com.bitcamp_2014.level;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
@@ -19,9 +20,11 @@ public class Level {
 	
 	Random random;
 	
+	public static int score;
 	public static boolean loseGame = false;
 	
 	public Level(){
+		score = 0;
 		player = new Player();
 		puzzlePieces = new ArrayList<PuzzlePiece>();
 		random = new Random();
@@ -37,9 +40,10 @@ public class Level {
 		
 		for(int i = 0; i < puzzlePieces.size(); i++){
 			PuzzlePiece puzzlePiece = puzzlePieces.get(i);
-			if(puzzlePiece.collision_Rect.intersects(Player.winCollision_Rect)){
+			if(puzzlePiece.collision_Rect.intersects(Player.winCollision_Rect) && player.direction == puzzlePiece.state){
 				puzzlePiece.active = false;
 				puzzlePieces.remove(i);
+				score++;
 				puzzlePieces.add(new PuzzlePiece(random.nextInt(4) + 1));
 			}
 			
@@ -61,5 +65,9 @@ public class Level {
 			puzzlePiece.render(g);
 		}
 		player.render(g);
+		
+		g.setColor(Color.WHITE);
+		g.setFont(new Font("Serif", Font.PLAIN, 18));
+		g.drawString("|" + score + "|", 155, 150);
 	}
 }

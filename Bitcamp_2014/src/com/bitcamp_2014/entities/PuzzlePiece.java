@@ -25,7 +25,7 @@ public class PuzzlePiece {
 			System.out.println("Position Above");
 		}
 		if(this.state == 2){
-			position = new Point(300, 125);
+			position = new Point(300, 130);
 			System.out.println("Position Right");
 		}
 		if(this.state == 3){
@@ -33,7 +33,7 @@ public class PuzzlePiece {
 			System.out.println("Position Down");
 		}
 		if(this.state == 4){
-			position = new Point(0, 130);
+			position = new Point(0, 135);
 			System.out.println("Position Left");
 		}
 		
