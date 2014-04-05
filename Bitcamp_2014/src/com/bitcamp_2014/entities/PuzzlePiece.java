@@ -42,8 +42,9 @@ public class PuzzlePiece {
 	}
 	
 	public void update(){
-		
-		speed = (float)random.nextInt(3) + 1;
+		if(Level.score <= 10) speed = 1;
+		else if(Level.score > 10 && Level.score <= 20) speed = 2;
+		else if(Level.score > 20 && Level.score <= 30) speed = 3;
 		
 		if(state == 1){
 			position.y += speed;

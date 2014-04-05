@@ -27,7 +27,7 @@ public class StartMenu {
 		g.setColor(Color.WHITE);
 		
 		g.setFont(new Font("Serif", Font.BOLD, 30));
-		g.drawString("<Insert Name Here>", 30, 100);
+		g.drawString("Color Sprint", 80, 100);
 		
 		g.setFont(new Font("Serif", Font.PLAIN, 12));
 		g.drawString("A game made for Bitcamp 2014", 80, 150);
