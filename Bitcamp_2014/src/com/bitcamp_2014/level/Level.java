@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import com.bitcamp_2014.entities.Player;
@@ -13,23 +14,40 @@ public class Level {
 	
 	//Init
 	Player player;
-	PuzzlePiece piece1;
+	ArrayList<PuzzlePiece> puzzlePieces;
 	
 	Random random;
 	
+	public static boolean loseGame = false;
+	
 	public Level(){
 		player = new Player();
+		puzzlePieces = new ArrayList<PuzzlePiece>();
 		random = new Random();
+		puzzlePieces.add(new PuzzlePiece(random.nextInt(3) + 1));
 	}
 	
 	public void update(){
 		player.update();
 		
-		if(piece1 == null){
+		for(PuzzlePiece puzzlePiece : puzzlePieces){
+			puzzlePiece.update();
+		}
+		
+		for(int i = 0; i < puzzlePieces.size(); i++){
+			PuzzlePiece puzzlePiece = puzzlePieces.get(i);
+			if(puzzlePiece.collision_Rect.intersects(Player.winCollision_Rect)){
+				puzzlePiece.active = false;
+				puzzlePieces.remove(i);
+				puzzlePieces.add(new PuzzlePiece(random.nextInt(4) + 1));
+			}
 			
-			piece1 = new PuzzlePiece(random.nextInt(4) + 1);
-		} else {
-			piece1.update();
+			if(puzzlePiece.collision_Rect.intersects(Player.loseCollision_Rect)){
+				System.out.println("YOU LOSE");
+				Level.loseGame = true;
+				puzzlePiece.active = false;
+				puzzlePieces.remove(i);
+			}
 		}
 	}
 	
@@ -38,7 +56,9 @@ public class Level {
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, 650, 550);
 		
-		piece1.render(g);
+		for(PuzzlePiece puzzlePiece : puzzlePieces){
+			puzzlePiece.render(g);
+		}
 		player.render(g);
 	}
 }

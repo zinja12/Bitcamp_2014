@@ -5,15 +5,19 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
 
+import com.bitcamp_2014.level.Level;
+
 public class PuzzlePiece {
 	
 	public Point position;
 	public Rectangle collision_Rect;
 	public int state;
 	public static float speed;
+	public boolean active;
 	
 	public PuzzlePiece(int state){
 		this.state = state;
+		active = true;
 		speed = 1f;
 		
 		if(this.state == 1){
