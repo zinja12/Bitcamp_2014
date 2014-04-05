@@ -18,6 +18,7 @@ public class Sound {
 		}
 	}
 	
+	//Sound controller methods
 	public void playSound(){
 		sound.loop();
 	}
