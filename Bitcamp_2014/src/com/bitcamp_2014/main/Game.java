@@ -20,7 +20,7 @@ public class Game extends JApplet implements Runnable{
 	public static Dimension size = new Dimension(650, 550);
 	public static Dimension pixel = new Dimension(size.width / pixelSize, size.height / pixelSize);
 	
-	public static final String TITLE = "Bitcamp 2014";
+	public static final String TITLE = "Color Sprint - Bitcamp 2014";
 	
 	public static BufferedImage screen = new BufferedImage(Game.size.width, Game.size.height, BufferedImage.TYPE_INT_ARGB);
 	
