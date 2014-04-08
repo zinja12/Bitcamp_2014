@@ -1,18 +1,15 @@
 package com.bitcamp_2014.main;
 
-import java.awt.Canvas;
 import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 
+import javax.swing.JApplet;
 import javax.swing.JFrame;
 
 import com.bitcamp_2014.input.Input;
-import com.bitcamp_2014.level.Level;
 
-public class Game extends Canvas implements Runnable{
+public class Game extends JApplet implements Runnable{
 	private static final long serialVersionUID = 1L;
 	
 	public static int pixelSize = 2;

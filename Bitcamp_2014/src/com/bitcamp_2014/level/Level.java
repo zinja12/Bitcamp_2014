@@ -2,11 +2,8 @@ package com.bitcamp_2014.level;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Point;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 import com.bitcamp_2014.entities.Player;

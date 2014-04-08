@@ -3,14 +3,6 @@ package com.bitcamp_2014.main;
 import java.applet.Applet;
 import java.applet.AudioClip;
 import java.awt.Graphics2D;
-import java.io.File;
-import java.io.InputStream;
-
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.DataLine;
 
 import com.bitcamp_2014.level.Level;
 import com.bitcamp_2014.menus.EndMenu;
@@ -29,6 +21,8 @@ public class GameStates {
 	StartMenu startMenu;
 	EndMenu endMenu;
 	
+	private AudioClip clip;
+	
 	public GameStates(){
 		current_state = GameState.TITLE;
 		
@@ -36,22 +30,11 @@ public class GameStates {
 		startMenu = new StartMenu();
 		endMenu = new EndMenu();
 		
-		try {
-		    File yourFile = new File("res/gameAudio_01.wav");
-		    AudioInputStream stream;
-		    AudioFormat format;
-		    DataLine.Info info;
-		    Clip clip;
-
-		    stream = AudioSystem.getAudioInputStream(yourFile);
-		    format = stream.getFormat();
-		    info = new DataLine.Info(Clip.class, format);
-		    clip = (Clip) AudioSystem.getLine(info);
-		    clip.open(stream);
-		    clip.loop(Clip.LOOP_CONTINUOUSLY);
-		}
-		catch (Exception e) {
-		    //Do not do anything
+		try{
+			clip = Applet.newAudioClip(getClass().getResource("/gameAudio_01.wav"));
+			clip.loop();
+		} catch(Exception e){
+			//Do nothing
 			e.printStackTrace();
 		}
 	}
